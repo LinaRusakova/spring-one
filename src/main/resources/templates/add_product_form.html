@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить продукт в репозиторий продуктов</title>
+    <base href="prdoucts">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <span class="navbar-brand" >MENU</span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="all">Product Repository</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="create">Add product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="find">Find product</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="container">
+    <h1>Добавить продукт в репозиторий продуктов</h1>
+
+    <form method="post" th:action="@{/products/create}" style="width:600px">
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" style="width:250px">ID продукта:</span>
+            <input class="form-control" title="ID продукта" placeholder="ID продукта" type="number" name="id">
+        </div>
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" style="width:250px">Название продукта:</span>
+            <input type="text" class="form-control" placeholder="Название продукта" title="Название продукта"
+                   name="title">
+        </div>
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" style="width:250px">Цена продукта:</span>
+            <input type="number" class="form-control" placeholder="Цена" title="Цена" name="cost">
+        </div>
+        <button class="form-control" type="submit">Добавить продукт</button>&nbsp;&nbsp;
+        <button class="form-control" type="reset">Очистить форму</button>
+    </form>
+</div>
+</body>
+</html>
