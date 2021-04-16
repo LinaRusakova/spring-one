@@ -23,6 +23,7 @@ public class ProductController {
         this.productService = productService;
     }
 
+
     @GetMapping("/all")
     public String showAllProducts(Model model) {
         List<Product> productList = productService.findAll();
@@ -66,5 +67,17 @@ public class ProductController {
             return "redirect:/products/all";
         }
 
+    }
+
+    @GetMapping("/changecost/{id}/{vector}")
+    public String changeCost(@PathVariable Long id, @PathVariable Character vector) {
+        productService.changeCost(id, vector);
+        return "redirect:/products/all";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable Long id) {
+        productService.deleteById(id);
+        return "redirect:/products/all";
     }
 }

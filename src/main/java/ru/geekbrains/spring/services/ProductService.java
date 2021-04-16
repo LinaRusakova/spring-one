@@ -28,4 +28,21 @@ public class ProductService {
     public void save(Product product) {
         productRepository.save(product);
     }
+
+    public void changeCost(Long id, Character vector) {
+        Optional<Product> product = findOneById(id);
+        Product tempProduct = product.get();
+        if (vector.equals(Character.valueOf('+')) && (tempProduct.getCost() + 1) <= 100) {
+            tempProduct.setCost(tempProduct.getCost() + 1);
+            productRepository.changeProduct(tempProduct);
+        } else if (vector.equals(Character.valueOf('-')) && (tempProduct.getCost() - 1) >= 0) {
+            tempProduct.setCost(tempProduct.getCost() - 1);
+            productRepository.changeProduct(tempProduct);
+        }
+
+    }
+
+    public void deleteById(Long id) {
+        productRepository.deleteById(id);
+    }
 }
