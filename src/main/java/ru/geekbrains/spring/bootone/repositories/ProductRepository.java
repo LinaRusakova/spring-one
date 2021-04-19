@@ -1,7 +1,7 @@
-package ru.geekbrains.spring.repositories;
+package ru.geekbrains.spring.bootone.repositories;
 
 import org.springframework.stereotype.Component;
-import ru.geekbrains.spring.model.Product;
+import ru.geekbrains.spring.bootone.model.Product;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;

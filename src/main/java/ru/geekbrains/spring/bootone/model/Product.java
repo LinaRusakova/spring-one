@@ -1,4 +1,4 @@
-package ru.geekbrains.spring.model;
+package ru.geekbrains.spring.bootone.model;
 
 public class Product {
     private Long id;

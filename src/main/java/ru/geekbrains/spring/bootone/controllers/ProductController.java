@@ -1,12 +1,12 @@
-package ru.geekbrains.spring.controllers;
+package ru.geekbrains.spring.bootone.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.geekbrains.spring.model.Product;
-import ru.geekbrains.spring.model.ErrorPage;
-import ru.geekbrains.spring.services.ProductService;
+import ru.geekbrains.spring.bootone.model.Product;
+import ru.geekbrains.spring.bootone.model.ErrorPage;
+import ru.geekbrains.spring.bootone.services.ProductService;
 
 import java.util.List;
 import java.util.Optional;

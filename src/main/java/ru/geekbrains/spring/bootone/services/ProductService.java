@@ -1,9 +1,9 @@
-package ru.geekbrains.spring.services;
+package ru.geekbrains.spring.bootone.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import ru.geekbrains.spring.model.Product;
-import ru.geekbrains.spring.repositories.ProductRepository;
+import ru.geekbrains.spring.bootone.model.Product;
+import ru.geekbrains.spring.bootone.repositories.ProductRepository;
 
 import java.util.List;
 import java.util.Optional;
