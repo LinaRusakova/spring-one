@@ -1,4 +1,4 @@
-package ru.geekbrains.spring.hibernate;
+package ru.geekbrains.spring.repositories;
 
 import javax.persistence.*;
 
@@ -16,12 +16,15 @@ public class Product {
     @Column(name = "price")
     private int price;
 
-    public Product() {
-    }
 
-    public Product(String title, int price) {
+
+ public Product(String title, int price) {
         this.title = title;
         this.price = price;
+    }
+
+    public Product() {
+
     }
 
     public Long getId() {

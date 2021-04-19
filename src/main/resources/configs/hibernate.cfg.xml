@@ -16,6 +16,6 @@
         <property name="format_sql">true</property> <!-- Show SQL formatted -->
 
 
-        <mapping class="ru.geekbrains.spring.hibernate.Product"/>
+        <mapping class="ru.geekbrains.spring.repositories.Product"/>
     </session-factory>
 </hibernate-configuration>

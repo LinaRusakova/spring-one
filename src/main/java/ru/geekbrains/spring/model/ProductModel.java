@@ -1,9 +1,14 @@
-package ru.geekbrains.spring.bootone.model;
+package ru.geekbrains.spring.model;
 
-public class Product {
+public class ProductModel {
     private Long id;
     private String title;
-    private Double cost;
+    private int cost;
+
+    public ProductModel(String title, int cost) {
+        this.title = title;
+        this.cost = cost;
+    }
 
     public Long getId() {
         return id;
@@ -21,20 +26,21 @@ public class Product {
         this.title = title;
     }
 
-    public Double getCost() {
+    public int getCost() {
         return cost;
     }
 
-    public void setCost(Double cost) {
+    public void setCost(int cost) {
         this.cost = cost;
     }
 
-    public Product(Long id, String name, Double cost) {
+    public ProductModel(Long id, String name, int cost) {
         this.id = id;
         this.title = name;
         this.cost = cost;
     }
 
-    public Product() {
+    public ProductModel() {
     }
 }
+

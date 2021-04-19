@@ -1,12 +1,13 @@
-package ru.geekbrains.spring.bootone.controllers;
+package ru.geekbrains.spring.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.geekbrains.spring.bootone.model.Product;
-import ru.geekbrains.spring.bootone.model.ErrorPage;
-import ru.geekbrains.spring.bootone.services.ProductService;
+import ru.geekbrains.spring.model.ProductModel;
+import ru.geekbrains.spring.model.ErrorPage;
+import ru.geekbrains.spring.repositories.ProductDao;
+import ru.geekbrains.spring.services.ProductService;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,6 +15,7 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/products")
 public class ProductController {
+
 
     private ProductService productService;
     private ErrorPage errorPage;
@@ -25,16 +27,22 @@ public class ProductController {
 
     @GetMapping("/all")
     public String showAllProducts(Model model) {
-        List<Product> productList = productService.findAll();
+        List<ProductModel> productList = productService.findAll();
         model.addAttribute("products", productList);
         return "products";
     }
 
     @PostMapping("/find")
     public String showProductInfo(@RequestParam(name = "id") Long id, Model model) {
-        Optional<Product> product = productService.findOneById(id);
-        product.ifPresent(value -> model.addAttribute("product", value));
-        return "product_info";
+        ProductModel product = productService.findById(id);
+        if (product== null) {
+            ErrorPage errorPage = new ErrorPage("Продукт не найден! Повторите ваш запрос.");
+            model.addAttribute("error", errorPage);
+            return "wrong";
+        } else {
+            model.addAttribute("product", product);
+            return "product_info";
+        }
     }
 
     @GetMapping("/find")
@@ -54,14 +62,14 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    public String createNewProduct(@RequestParam Long id, @RequestParam(defaultValue = "_notInput") String title, @RequestParam(defaultValue = "null") Double cost, Model model) {
+    public String createNewProduct(@RequestParam Long id, @RequestParam(defaultValue = "_notInput") String title, @RequestParam(defaultValue = "null") int cost, Model model) {
         if (title.equals("_notInput")) {
             String message = "Вы не указали значение для поля: \"Название продукта\".";
             ErrorPage errorPage = new ErrorPage(message);
             model.addAttribute("error", errorPage);
             return "wrong";
         } else {
-            Product product = new Product(id, title, cost);
+            ProductModel product = new ProductModel(title, cost);
             productService.save(product);
             return "redirect:/products/all";
         }

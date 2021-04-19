@@ -1,4 +1,4 @@
-package ru.geekbrains.spring.bootone.model;
+package ru.geekbrains.spring.model;
 
 public class ErrorPage {
     private String message;
