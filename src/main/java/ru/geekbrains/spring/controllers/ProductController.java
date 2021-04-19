@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.spring.model.ProductModel;
 import ru.geekbrains.spring.model.ErrorPage;
-import ru.geekbrains.spring.repositories.ProductDao;
 import ru.geekbrains.spring.services.ProductService;
 
 import java.util.List;
@@ -35,7 +34,7 @@ public class ProductController {
     @PostMapping("/find")
     public String showProductInfo(@RequestParam(name = "id") Long id, Model model) {
         ProductModel product = productService.findById(id);
-        if (product== null) {
+        if (product == null) {
             ErrorPage errorPage = new ErrorPage("Продукт не найден! Повторите ваш запрос.");
             model.addAttribute("error", errorPage);
             return "wrong";
@@ -74,5 +73,17 @@ public class ProductController {
             return "redirect:/products/all";
         }
 
+    }
+
+    @GetMapping("/changecost/{id}/{vector}")
+    public String changeCost(@PathVariable Long id, @PathVariable String vector) {
+        productService.changeCost(id, vector);
+        return "redirect:/products/all";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable Long id) {
+        productService.deleteById(id);
+        return "redirect:/products/all";
     }
 }

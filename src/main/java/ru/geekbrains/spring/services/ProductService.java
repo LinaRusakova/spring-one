@@ -3,11 +3,9 @@ package ru.geekbrains.spring.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.geekbrains.spring.model.ProductModel;
-
 import ru.geekbrains.spring.repositories.ProductDao;
 
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class ProductService {
@@ -30,5 +28,21 @@ public class ProductService {
 
     public void save(ProductModel product) {
         productRepoDB.saveOrUpdate(product);
+    }
+
+    public void changeCost(Long id, String vector) {
+        ProductModel tempProduct = findById(id);
+
+        if (vector.equals("plus") && (tempProduct.getCost() + 1) <= 100) {
+            tempProduct.setCost(tempProduct.getCost()+1);
+            productRepoDB.save(tempProduct);
+        } else if (vector.equals("minus") && (tempProduct.getCost() - 1) >= 0) {
+            tempProduct.setCost(tempProduct.getCost()-1);
+            productRepoDB.save(tempProduct);
+        }
+    }
+
+    public void deleteById(Long id) {
+        productRepoDB.deleteById(id);
     }
 }

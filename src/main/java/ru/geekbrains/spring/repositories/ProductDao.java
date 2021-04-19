@@ -88,15 +88,16 @@ public class ProductDao {
 
 
     public void saveOrUpdate(ProductModel productModel) {
-        Product productToDB = new Product(productModel.getTitle(), productModel.getCost());
+
         try (Session session = factory.getCurrentSession()) {
+            Product productToDB = new Product(productModel.getId(), productModel.getTitle(), productModel.getCost());
             session.beginTransaction();
             session.saveOrUpdate(productToDB);
             session.getTransaction().commit();
         }
     }
 
-    public static void deleteProduct(Long id) {
+    public static void deleteById(Long id) {
         try (Session session = factory.getCurrentSession()) {
             session.beginTransaction();
             Product productToDelete = Optional.of(session.get(Product.class, id)).get();

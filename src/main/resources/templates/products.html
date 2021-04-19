@@ -11,7 +11,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="nav-link active" aria-current="page" data-th-href="@{/}"><span class="navbar-brand" >MENU</span></a>
+        <a class="nav-link active" aria-current="page" data-th-href="@{/}"><span class="navbar-brand">MENU</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -19,7 +19,8 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" data-th-href="@{/products/all}">Product Repository</a>
+                    <a class="nav-link active" aria-current="page" data-th-href="@{/products/all}">Product
+                        Repository</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-th-href="@{/products/create}">Add product</a>
@@ -51,8 +52,8 @@
             <td th:text="${p.title}" scope="row"></td>
             <td th:text="${p.cost}" scope="row"></td>
             <td scope="row">
-                <a th:href="@{'/products/changecost/' + ${p.id} + '/'+ ${'+'}}" class="btn btn-light">+</a>&nbsp;
-                <a th:href="@{'/products/changecost/' + ${p.id} + '/'+ ${'-'}}" class="btn btn-light">-</a><br>
+                <a th:href="@{'/products/changecost/' + ${p.id} + '/'+ ${'plus'}}" class="btn btn-light">+</a>&nbsp;
+                <a th:href="@{'/products/changecost/' + ${p.id} + '/'+ ${'minus'}}" class="btn btn-light">-</a><br>
             <td scope="row">
                 <a th:href="@{'/products/delete/' + ${p.id}}" class="btn btn-light">Удалить запись</a></td>
             </td>
