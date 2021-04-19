@@ -19,7 +19,7 @@ public class ProductRepository {
                 new Product(1L, "Milk", 35.50),
                 new Product(2L, "Chocolate", 44.10),
                 new Product(3L, "Coffee", 99.99),
-                new Product(4L, "Beacon", 124.34),
+                new Product(4L, "Beacon", 92.34),
                 new Product(5L, "Tea", 84.22)
         ));
     }
@@ -37,7 +37,27 @@ public class ProductRepository {
         return Optional.empty();
     }
 
-    public void save(Product product) {
-        productList.add(product);
+    public void changeProduct(Product product) {
+        Long tempId = product.getId();
+        for (int i = 0; i < productList.size(); i++) {
+            if (productList.get(i).getId().equals(tempId)) {
+                productList.set(i, product);
+            }
+        }
+
     }
+
+    public void save(Product product) {
+
+        productList.add(product);
+
+
+    }
+
+    public void deleteById(Long id) {
+        productList.removeIf(product -> product.getId().equals(id));
+
+
+    }
+
 }
